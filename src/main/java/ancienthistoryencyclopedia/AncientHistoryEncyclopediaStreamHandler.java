@@ -11,37 +11,38 @@
      the specific language governing permissions and limitations under the License.
 */
 
-package encyclopediaofphilosophy;
+package ancienthistoryencyclopedia;
 
 import com.amazon.ask.Skill;
 import com.amazon.ask.SkillStreamHandler;
 import com.amazon.ask.Skills;
-import encyclopediaofphilosophy.handlers.CancelandStopIntentHandler;
-import encyclopediaofphilosophy.handlers.FallbackIntentHandler;
-import encyclopediaofphilosophy.handlers.HelpIntentHandler;
-import encyclopediaofphilosophy.handlers.LaunchRequestHandler;
-import encyclopediaofphilosophy.handlers.EncyclopediaOfPhilosophySearchIntentHandler;
-import encyclopediaofphilosophy.handlers.SessionEndedRequestHandler;
-import encyclopediaofphilosophy.handlers.EncyclopediaOfPhilosophyQuoteIntentHandler;
 
-public class EncyclopediaOfPhilosophyStreamHandler extends SkillStreamHandler {
+import ancienthistoryencyclopedia.handlers.CancelandStopIntentHandler;
+import ancienthistoryencyclopedia.handlers.AncientHistoryEncyclopediaQuoteIntentHandler;
+import ancienthistoryencyclopedia.handlers.AncientHistoryEncyclopediaSearchIntentHandler;
+import ancienthistoryencyclopedia.handlers.FallbackIntentHandler;
+import ancienthistoryencyclopedia.handlers.HelpIntentHandler;
+import ancienthistoryencyclopedia.handlers.LaunchRequestHandler;
+import ancienthistoryencyclopedia.handlers.SessionEndedRequestHandler;
+
+public class AncientHistoryEncyclopediaStreamHandler extends SkillStreamHandler {
 
     private static Skill getSkill() {
         return Skills.standard()
                 .addRequestHandlers(
-                        new EncyclopediaOfPhilosophyQuoteIntentHandler(),
-                        new EncyclopediaOfPhilosophySearchIntentHandler(),
+                        new AncientHistoryEncyclopediaQuoteIntentHandler(),
+                        new AncientHistoryEncyclopediaSearchIntentHandler(),
                         new LaunchRequestHandler(),
                         new CancelandStopIntentHandler(),
                         new SessionEndedRequestHandler(),
                         new HelpIntentHandler(),
                         new FallbackIntentHandler())
                 // Add your skill id below
-                .withSkillId("amzn1.ask.skill.b73dddb0-1092-421d-bfdd-04f9e61eff9a")
+                .withSkillId("amzn1.ask.skill.0a4bff09-3f4a-406d-b1fc-2441c56f6144")
                 .build();
     }
 
-    public EncyclopediaOfPhilosophyStreamHandler() {
+    public AncientHistoryEncyclopediaStreamHandler() {
         super(getSkill());
     }
 

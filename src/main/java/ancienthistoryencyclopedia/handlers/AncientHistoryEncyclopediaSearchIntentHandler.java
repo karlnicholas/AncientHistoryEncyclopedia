@@ -11,7 +11,7 @@
      the specific language governing permissions and limitations under the License.
 */
 
-package encyclopediaofphilosophy.handlers;
+package ancienthistoryencyclopedia.handlers;
 
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
@@ -21,8 +21,8 @@ import com.amazon.ask.model.Request;
 import com.amazon.ask.model.Response;
 import com.amazon.ask.model.Slot;
 
-import iep.lucene.SearchFiles;
-import iep.lucene.SearchResult;
+import ahe.lucene.SearchFiles;
+import ahe.lucene.SearchResult;
 
 import java.io.IOException;
 import java.util.List;
@@ -35,8 +35,8 @@ import org.apache.lucene.queryparser.classic.ParseException;
 
 import static com.amazon.ask.request.Predicates.intentName;
 
-public class EncyclopediaOfPhilosophySearchIntentHandler implements RequestHandler {
-    private static final Logger logger = LogManager.getLogger(EncyclopediaOfPhilosophySearchIntentHandler.class);
+public class AncientHistoryEncyclopediaSearchIntentHandler implements RequestHandler {
+    private static final Logger logger = LogManager.getLogger(AncientHistoryEncyclopediaSearchIntentHandler.class);
     private static final String SLOT_SEARCH_PHRASE = "SearchPhrase";
     private SearchFiles searchFiles = new SearchFiles();
 
@@ -91,7 +91,7 @@ public class EncyclopediaOfPhilosophySearchIntentHandler implements RequestHandl
             return input.getResponseBuilder()
                     .withSpeech(speechText + " You can search again or ask for a quote.")
                     .withSimpleCard("Search found " + searchResult.subject,  "https://www.iep.utm.edu/" + searchResult.url + "\n" + speechText)
-                    .withSimpleCard("Encyclopedia Of Philosophy",  speechText)
+                    .withSimpleCard("Ancient History Encyclopedia",  speechText)
                     .withReprompt("You can search for another entry or ask for a quote, or stop.")
                     .withShouldEndSession(false)
                     .build();

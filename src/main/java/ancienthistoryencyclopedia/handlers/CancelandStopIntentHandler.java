@@ -11,31 +11,26 @@
      the specific language governing permissions and limitations under the License.
 */
 
-package encyclopediaofphilosophy.handlers;
+package ancienthistoryencyclopedia.handlers;
 
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
-import com.amazon.ask.model.LaunchRequest;
 import com.amazon.ask.model.Response;
 
 import java.util.Optional;
 
-import static com.amazon.ask.request.Predicates.requestType;
+import static com.amazon.ask.request.Predicates.intentName;
 
-public class LaunchRequestHandler implements RequestHandler {
+public class CancelandStopIntentHandler implements RequestHandler {
     @Override
     public boolean canHandle(HandlerInput input) {
-        return input.matches(requestType(LaunchRequest.class));
+        return input.matches(intentName("AMAZON.StopIntent").or(intentName("AMAZON.CancelIntent")));
     }
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
-        String speechText = "Welcome to the Encyclopedia of Philosophy. You can search for an entry or ask for a quote.";
-        String repromptText = "You can search for an entry or ask for a quote.";
         return input.getResponseBuilder()
-                .withSpeech(speechText)
-                .withReprompt(repromptText)
-                .withShouldEndSession(false)
+                .withSpeech("Goodbye")
                 .build();
     }
 }

@@ -2,11 +2,11 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>encyclopediaofphilosophy</groupId>
-	<artifactId>encyclopediaofphilosophy</artifactId>
+	<groupId>ancienthistoryencyclopedia</groupId>
+	<artifactId>ancienthistoryencyclopedia</artifactId>
 	<packaging>jar</packaging>
 	<version>1.0</version>
-	<name>Alexa Skill for Encyclopedia of Philosophy</name>
+	<name>Alexa Skill for Ancient History Encyclopedia</name>
 	<dependencies>
 		<dependency>
 			<groupId>com.amazon.alexa</groupId>
@@ -29,8 +29,8 @@
 			<version>2.11.1</version>
 		</dependency>
 		<dependency>
-			<groupId>IEP</groupId>
-			<artifactId>IEP</artifactId>
+			<groupId>ahe</groupId>
+			<artifactId>ahe</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>

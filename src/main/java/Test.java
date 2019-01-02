@@ -6,8 +6,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.lucene.queryparser.classic.ParseException;
 
-import iep.lucene.SearchFiles;
-import iep.lucene.SearchResult;
+import ahe.lucene.SearchFiles;
+import ahe.lucene.SearchResult;
 
 public class Test {
     // Initialize the Log4j logger.
@@ -23,7 +23,7 @@ public class Test {
 	public void run() {
 		List<SearchResult> searchResults;
 		try {
-			searchResults = searchFiles.query("Kant");
+			searchResults = searchFiles.query("pyramid");
 			if ( searchResults.size() > 0 ) {
 				System.out.println("Found results: " + searchResults.size());
 				for ( SearchResult searchResult: searchResults ) {
