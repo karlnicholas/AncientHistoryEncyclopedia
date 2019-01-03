@@ -31,6 +31,7 @@ public class Test {
 				}
 				System.out.println("Best result\n"+searchResults.get(0).preamble);
 				logger.info("Quote found: " + searchResults.get(0).subject);
+				logger.info("Image at : " + searchResults.get(0).imgSrc);
 		        // Write log to CloudWatch using LambdaLogger.
 			}
 		} catch (ParseException | IOException e) {

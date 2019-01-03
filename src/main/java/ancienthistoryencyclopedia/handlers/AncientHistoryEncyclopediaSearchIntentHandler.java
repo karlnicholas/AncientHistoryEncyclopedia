@@ -20,6 +20,7 @@ import com.amazon.ask.model.IntentRequest;
 import com.amazon.ask.model.Request;
 import com.amazon.ask.model.Response;
 import com.amazon.ask.model.Slot;
+import com.amazon.ask.model.ui.Image;
 
 import ahe.lucene.SearchFiles;
 import ahe.lucene.SearchResult;
@@ -58,6 +59,7 @@ public class AncientHistoryEncyclopediaSearchIntentHandler implements RequestHan
         String speechText;
         boolean good = false;
         SearchResult searchResult = null;
+		Image cardImage = null; 
 
         // Check for favorite color and create output to user.
         if (searchPhraseSlot != null) {
@@ -75,6 +77,7 @@ public class AncientHistoryEncyclopediaSearchIntentHandler implements RequestHan
 				// Create the plain text output				
 	            speechText = "Search found " + searchResult.subject +". " + searchResult.preamble;
 	            good = true;
+				cardImage = Image.builder().withSmallImageUrl("https://www.ancient.eu"+searchResult.imgSrc).build();
 	            logger.info("Search found " + searchResult.subject + " for " + searchPhrase + ":" + searchResult.url);
 			} else {
 	            speechText = "Sorry, nothing found for " + searchPhrase + ". You can search for another entry or ask for a quote.";
@@ -90,8 +93,8 @@ public class AncientHistoryEncyclopediaSearchIntentHandler implements RequestHan
         if ( good ) {
             return input.getResponseBuilder()
                     .withSpeech(speechText + " You can search again or ask for a quote.")
-                    .withSimpleCard("Search found " + searchResult.subject,  "https://www.iep.utm.edu/" + searchResult.url + "\n" + speechText)
-                    .withSimpleCard("Ancient History Encyclopedia",  speechText)
+//                    .withStandardCard("Search for " + searchResult.subject,  speechText, cardImage)
+                    .withStandardCard("Ancient History Encyclopedia",  speechText, cardImage)
                     .withReprompt("You can search for another entry or ask for a quote, or stop.")
                     .withShouldEndSession(false)
                     .build();

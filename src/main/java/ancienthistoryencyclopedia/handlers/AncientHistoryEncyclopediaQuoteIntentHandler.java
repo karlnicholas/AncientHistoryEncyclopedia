@@ -16,6 +16,7 @@ package ancienthistoryencyclopedia.handlers;
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.Response;
+import com.amazon.ask.model.ui.Image;
 
 import ahe.lucene.SearchResult;
 import quote.GetQuote;
@@ -42,6 +43,7 @@ public class AncientHistoryEncyclopediaQuoteIntentHandler implements RequestHand
     public Optional<Response> handle(HandlerInput input) {
     	String speechText;
 		SearchResult searchResult = null ;
+		Image cardImage = null; 
 		try {
 			searchResult = getQuote.getRandomQuote();
 		} catch (IOException | ParseException e) {
@@ -56,12 +58,13 @@ public class AncientHistoryEncyclopediaQuoteIntentHandler implements RequestHand
 	                .build();
 		} else {
 			speechText = "Random entry for "+searchResult.subject+". " + searchResult.preamble;
+			cardImage = Image.builder().withSmallImageUrl("https://www.ancient.eu"+searchResult.imgSrc).build();
 			logger.info("Random entry for "+searchResult.subject + "=" + searchResult.url);
 		}
 
         return input.getResponseBuilder()
                 .withSpeech(speechText + "<p>You can ask for another quote or do a search.</p>")
-                .withSimpleCard("Entry for " + searchResult.subject,  "https://www.iep.utm.edu/" + searchResult.url + "\n" + speechText)
+                .withStandardCard("Ancient History Encyclopedia",  speechText, cardImage)
                 .withReprompt("You can search for an entry, ask for a quote, or stop.")
                 .withShouldEndSession(false)
                 .build();
